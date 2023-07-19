@@ -1,0 +1,12 @@
+(executable
+  (public_name lintcstubs_arity)
+  (libraries compiler-libs.common)
+)
+
+(cram (deps %{bin:lintcstubs_arity}))
+
+;(rule
+;  (alias runtest)
+;  (enabled_if (= %{system} linux))
+;  (action (run ./test.sh %{bin:lintcstubs_arity}))
+;)
