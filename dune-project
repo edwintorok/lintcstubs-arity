@@ -1,7 +1,6 @@
 (lang dune 2.7)
 (cram enable)
 
-(formatting (enabled_for ocaml))
 (generate_opam_files)
 (name lintcstubs-arity)
 (source (github edwintorok/lintcstubs-arity))
@@ -12,7 +11,7 @@
 (package
  (name lintcstubs-arity)
  (synopsis "Generate headers for C bindings")
- (description "Generates .h files from 'external' declarations in .ml files. Can be used to spot mismatches in number of arguments between C primitive declared in OCaml and its implementation in the .c file.")
+ (description "Generates .h files from 'external' declarations in .ml or .cmt files. Can be used to spot mismatches in number of arguments between C primitive declared in OCaml and its implementation in the .c file.")
  (depends
   (ocaml (>= 4.08))
  )
@@ -20,4 +19,3 @@
   (ocaml-src (and :with-test))
  )
 )
-

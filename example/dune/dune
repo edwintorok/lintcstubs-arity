@@ -1,0 +1,41 @@
+(library
+ (name foo)
+ (foreign_stubs
+  (language c)
+  (names foostubs)))
+
+; run lintcstubs_arity_cmt to generate the header file
+
+(rule
+ (enabled_if
+  (>= %{ocaml_version} 4.10))
+ (action
+  (with-stdout-to
+   foo.h
+   (run %{bin:lintcstubs_arity_cmt} %{dep:.foo.objs/byte/foo.cmt}))))
+
+(rule
+ (enabled_if
+  (< %{ocaml_version} 4.10))
+ (action
+  (with-stdout-to
+   foo.h
+   (run %{bin:lintcstubs_arity} %{dep:foo.ml}))))
+
+(rule
+ ; editor integration: generate include paths for LSPs such as clangd
+ (target compile_flags.txt)
+ (mode promote)
+ (enabled_if
+  (= %{system} linux))
+ (action
+  (with-stdout-to
+   compile_flags.txt
+   (pipe-stdout
+    (progn
+     (echo "-Wall -Wextra -Wstrict-prototypes -D_FORTIFY_SOURCE=2 ")
+     (echo %{ocaml-config:ocamlc_cppflags} %{ocaml-config:ocamlc_cflags}
+       -I%{ocaml_where} -I)
+     (system pwd))
+    (system "xargs -n1 echo") ; the format is a single flag per line
+    ))))

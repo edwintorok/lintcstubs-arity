@@ -2,7 +2,7 @@
 opam-version: "2.0"
 synopsis: "Generate headers for C bindings"
 description:
-  "Generates .h files from 'external' declarations in .ml files. Can be used to spot mismatches in number of arguments between C primitive declared in OCaml and its implementation in the .c file."
+  "Generates .h files from 'external' declarations in .ml or .cmt files. Can be used to spot mismatches in number of arguments between C primitive declared in OCaml and its implementation in the .c file."
 maintainer: ["Edwin Török <edwin.torok@cloud.com>"]
 authors: ["Edwin Török <edwin.torok@cloud.com>"]
 license: "LGPL-2.1-or-later"

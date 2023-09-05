@@ -1,12 +1,14 @@
 (executable
-  (public_name lintcstubs_arity)
-  (libraries compiler-libs.common)
-)
+ (public_name lintcstubs_arity)
+ (libraries compiler-libs.common)
+ (package lintcstubs-arity))
 
-(cram (deps %{bin:lintcstubs_arity}))
+(cram
+ (deps %{bin:lintcstubs_arity}))
 
-;(rule
-;  (alias runtest)
-;  (enabled_if (= %{system} linux))
-;  (action (run ./test.sh %{bin:lintcstubs_arity}))
-;)
+(rule
+ (alias runtest)
+ (enabled_if
+  (= %{system} linux))
+ (action
+  (run ./test.sh %{bin:lintcstubs_arity})))

@@ -7,6 +7,28 @@ on:
 permissions: read-all
 
 jobs:
+  minimal:
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Install OCaml
+        run: sudo apt-get install -y ocaml make
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and auto-generate header (bytecode-only)
+        run: make -C example/minimal prog1.byte
+
+      - name: Run built example (bytecode-only)
+        run: example/minimal/prog1.byte
+
   build:
     strategy:
       fail-fast: false
@@ -18,6 +40,7 @@ jobs:
         ocaml-compiler:
           - 5.0.x
           - 4.14.x
+          - 4.10.x
           - 4.08.x
         exclude:
           - os: windows-latest
@@ -27,7 +50,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
@@ -36,7 +59,6 @@ jobs:
           dune-cache: true
 
       - run: opam install . --deps-only --with-test
-
 
       - run: opam install ocaml-src
         continue-on-error: true
@@ -49,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use OCaml 4.14.x
         uses: ocaml/setup-ocaml@v2
@@ -64,13 +86,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout tree
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set-up OCaml 4.14
         uses: ocaml/setup-ocaml@v2
         with:
-          ocaml-compiler: 4.14
+          ocaml-compiler: 4.14.x
           dune-cache: true
 
       - name: Lint opam
         uses: ocaml/setup-ocaml/lint-opam@v2
+
+  lint-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v4
+
+      - name: Set-up OCaml 4.14
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: 5.0.x
+          dune-cache: true
+
+      - name: Lint doc
+        uses: ocaml/setup-ocaml/lint-doc@v2

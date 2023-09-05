@@ -1,0 +1,13 @@
+foo.h
+.depend
+*.o
+*.cmi
+*.cmo
+*.cma
+*.cmx
+*.cmxa
+*.cmt
+*.byte
+*.native
+*.a
+*.so

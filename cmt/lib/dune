@@ -1,0 +1,6 @@
+(library
+ (public_name lintcstubs-arity.primitives_of_cmt)
+ (name primitives_of_cmt)
+ (libraries compiler-libs.common)
+ (enabled_if
+  (>= %{ocaml_version} 4.10)))

@@ -7,3 +7,4 @@
 (context (opam (switch vanilla-4.13.1)))
 (context (opam (switch vanilla-4.14.1)))
 (context (opam (switch vanilla-5.0.0)))
+(context (opam (switch vanilla-5.1.0~rc2)))
