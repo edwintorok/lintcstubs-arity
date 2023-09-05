@@ -34,8 +34,11 @@
    (pipe-stdout
     (progn
      (echo "-Wall -Wextra -Wstrict-prototypes -D_FORTIFY_SOURCE=2 ")
-     (echo %{ocaml-config:ocamlc_cppflags} %{ocaml-config:ocamlc_cflags}
-       -I%{ocaml_where} -I)
+     (echo
+      %{ocaml-config:ocamlc_cppflags}
+      %{ocaml-config:ocamlc_cflags}
+      -I%{ocaml_where}
+      -I)
      (system pwd))
     (system "xargs -n1 echo") ; the format is a single flag per line
     ))))
