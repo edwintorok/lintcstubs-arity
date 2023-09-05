@@ -1,4 +1,5 @@
 ![Build and test](https://github.com/edwintorok/lintcstubs-arity/actions/workflows/workflow.yml/badge.svg)
+
 Lintcstubs_arity — check consistency between OCaml primitive declarations and implementation
 ============================================================================================
 
