@@ -1,3 +1,7 @@
+## 0.2.1 (2023-09-05)
+
+* Build fixes and version constraints
+
 ## 0.2.0 (2023-09-05)
 
 * Add `lintcstubs_arity_cmt` tool that supports generating prototypes for unboxed arguments in primitives (requires OCaml 4.10+)

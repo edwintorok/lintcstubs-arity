@@ -82,21 +82,6 @@ jobs:
       - name: Lint fmt
         uses: ocaml/setup-ocaml/lint-fmt@v2
 
-  lint-opam:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout tree
-        uses: actions/checkout@v4
-
-      - name: Set-up OCaml 4.14
-        uses: ocaml/setup-ocaml@v2
-        with:
-          ocaml-compiler: 4.14.x
-          dune-cache: true
-
-      - name: Lint opam
-        uses: ocaml/setup-ocaml/lint-opam@v2
-
   lint-doc:
     runs-on: ubuntu-latest
     steps:

@@ -1,4 +1,4 @@
-(lang dune 2.7)
+(lang dune 3.0)
 (context (opam (switch vanilla-4.08.1)))
 (context (opam (switch vanilla-4.09.1)))
 (context (opam (switch vanilla-4.10.2)))
