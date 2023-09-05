@@ -27,8 +27,6 @@ let usage_msg = Printf.sprintf "%s [FILE.cmt...]" Sys.executable_name
 
 module StringSet = Set.Make (String)
 
-let calls = ref StringSet.empty
-
 let print_c_prototype res name args =
   let open Primitives_of_cmt in
   Printf.printf "CAMLprim %s %s(%s);\n" (ctype_of_native_arg res) name
