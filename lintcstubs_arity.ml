@@ -82,8 +82,6 @@ let () =
   (* avoid conflict on xentoollog, for 'vasprintf' *)
   print_endline "#define _GNU_SOURCE" ;
 
-  (* avoid conflict on xenctrl_stubs.c *)
-  print_endline "#define _XOPEN_SOURCE 600" ;
   (* get the definition of [value] *)
   print_endline "#include <caml/mlvalues.h>" ;
 
