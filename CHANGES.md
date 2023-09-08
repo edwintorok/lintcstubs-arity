@@ -1,3 +1,7 @@
+## 0.2.2 (2023-09-08)
+
+* Drop extra _XOPEN_SOURCE define that is not necessary in general
+
 ## 0.2.1 (2023-09-05)
 
 * Build fixes and version constraints
