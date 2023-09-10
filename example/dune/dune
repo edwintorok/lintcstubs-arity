@@ -7,17 +7,9 @@
 ; run lintcstubs_arity_cmt to generate the header file
 
 (rule
- (enabled_if
-  (>= %{ocaml_version} 4.10))
  (action
   (with-stdout-to
    foo.h
-   (run %{bin:lintcstubs_arity_cmt} %{dep:.foo.objs/byte/foo.cmt}))))
-
-(rule
- (enabled_if
-  (< %{ocaml_version} 4.10))
- (action
-  (with-stdout-to
-   foo.h
-   (run %{bin:lintcstubs_arity} %{dep:foo.ml}))))
+   (progn
+    (run %{bin:lintcstubs_arity_cmt} %{dep:.foo.objs/byte/foo.cmt})
+    (run %{bin:lintcstubs_arity} %{dep:foo.ml})))))

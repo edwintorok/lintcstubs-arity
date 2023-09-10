@@ -1,20 +1,14 @@
 (executable
  (public_name lintcstubs_arity_cmt)
  (package lintcstubs-arity)
- (libraries primitives_of_cmt)
- (enabled_if
-  (>= %{ocaml_version} 4.10)))
+ (libraries primitives_of_cmt))
 
 (cram
- (deps %{bin:lintcstubs_arity_cmt})
- (enabled_if
-  (>= %{ocaml_version} 4.10)))
+ (deps %{bin:lintcstubs_arity_cmt}))
 
 (rule
  (alias runtest)
  (enabled_if
-  (and
-   (>= %{ocaml_version} 4.10)
-   (= %{system} linux)))
+  (= %{system} linux))
  (action
   (run ./test.sh %{bin:lintcstubs_arity_cmt})))

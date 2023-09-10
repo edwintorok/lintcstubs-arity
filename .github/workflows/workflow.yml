@@ -41,7 +41,6 @@ jobs:
           - 5.0.x
           - 4.14.x
           - 4.10.x
-          - 4.08.x
         exclude:
           - os: windows-latest
             ocaml-compiler: 5.0.x

@@ -1,4 +1,4 @@
-(lang dune 3.0)
+(lang dune 2.7)
 (cram enable)
 (implicit_transitive_deps false)
 
