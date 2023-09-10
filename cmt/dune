@@ -1,5 +1,6 @@
 (executable
  (public_name lintcstubs_arity_cmt)
+ (package lintcstubs-arity)
  (libraries primitives_of_cmt)
  (enabled_if
   (>= %{ocaml_version} 4.10)))

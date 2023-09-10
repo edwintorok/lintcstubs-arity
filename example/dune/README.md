@@ -26,28 +26,11 @@ The OCaml headers are usually not on default include paths, and `foo.h` is only 
 Editors with language server integrations (e.g., using `clangd` as language server) won't be able to find these,
 and show an error at the `#include` lines.
 
-For better LSP integration the following rule can be added to dune (this is useful even without auto-generated headers):
+For better LSP integration the [`dune-compiledb`](https://github.com/edwintorok/dune-compiledb/) tool can be used:
 ```
-(rule
- ; editor integration: generate include paths for LSPs such as clangd
- (target compile_flags.txt)
- (mode promote)
- (enabled_if
-  (= %{system} linux))
- (action
-  (with-stdout-to
-   compile_flags.txt
-   (pipe-stdout
-    (progn
-     (echo %{ocaml-config:ocamlc_cppflags} %{ocaml-config:ocamlc_cflags}
-       -I%{ocaml_where} -I)
-     (system pwd))
-    (system "xargs -n1 echo") ; the format is a single flag per line
-    ))))
+dune rules | dune-compiledb <project-root> [...additional flags]
 ```
-
-You can also enable some additional warning options in your editor, see the [dune](dune) file for a full example.
 
 # OCaml 4.08 &ndash; 4.10
 
-For older versions of OCaml you can use `lintcstubs_arity` instead, see the [dune](dune) file on how to chose between the tools based on the compiler version.
+For older versions of OCaml you can use `lintcstubs_arity` instead, see the [dune](dune) file on how to choose between the tools based on the compiler version.
