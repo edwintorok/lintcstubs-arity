@@ -1,5 +1,7 @@
 ## 0.4.0 (Next)
 
+* Backport to Dune 2.7
+
 ## 0.2.2 (2023-09-08)
 
 * Drop extra _XOPEN_SOURCE define that is not necessary in general

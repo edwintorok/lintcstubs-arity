@@ -1,15 +1,16 @@
 ![Build and test](https://github.com/edwintorok/lintcstubs-arity/actions/workflows/workflow.yml/badge.svg)
 
-Lintcstubs_arity — check consistency between OCaml primitive declarations and implementation
-============================================================================================
+`Lintcstubs_arity` — check consistency between OCaml primitive declarations and implementation
+==============================================================================================
 
-These are a suite of tools and libraries for finding mismatches between the number of arguments declared in an `.ml` file for a C primitive and its implementation in the corresponding `.c` file.
+These are a suite of tools and libraries for finding mismatches between the number of arguments declared in a `.ml` file for a C primitive and its implementation in the corresponding `.c` file.
 
-* `lintcstubs_arity` is a tool that generates a C header file from an OCaml `.ml` file that contains an `external` declaration and works on OCaml 4.08+.
-* `lintcstubs_arity_cmt` generates the header file from a `.cmt` file instead and works on OCaml 4.10+.
-* `lintcstubs-arity.primitives_of_cmt` is an OCaml library that can be used to iterate over all primitive declarations in a `.cmt` file and works on OCaml 4.10+.
+* `lintcstubs_arity` is a tool that generates a C header file from an OCaml `.ml` file that contains `external` declarations
+* `lintcstubs_arity_cmt` generates the header file from a `.cmt` file instead.
+* `lintcstubs-arity.primitives_of_cmt` is an OCaml library that can be used to iterate over all primitive declarations in a `.cmt` file.
 
 Their only dependency is `compiler-libs` which is shipped with the compiler distribution.
+Requires OCaml 4.10+.
 
 # Installation
 
@@ -26,7 +27,7 @@ If you do not use `opam` or `dune` it is still possible to use this tool, see [e
 # Why?
 
 If the number or type of arguments doesn't match between the declaration in the `.ml` file or its implementation in `.c` then this can result in undefined behaviour at runtime.
-Neither the C or OCaml compiler is aware of the requirements of the other module, and the linker only checks the presence of the `symbol`, but not its type.
+Neither the C nor OCaml compiler is aware of the requirements of the other module, and the linker only checks the presence of the `symbol`, but not its type.
 By generating a `.h` file such mismatches can be detected at build time by the C compiler.
 
 The [paper](https://arxiv.org/abs/2307.14909) contains concrete examples of how such mismatches can occur in practice as software evolves.
@@ -36,9 +37,7 @@ The [paper](https://arxiv.org/abs/2307.14909) contains concrete examples of how 
 Consult the [official](https://v2.ocaml.org/manual/intfc.html#ss:c-prim-impl)
 [manual](https://v2.ocaml.org/manual/intfc.html#ss:c-unboxed) on how to implement C primitives correctly.
 
-
-## On OCaml 4.10+
-
+## Bytecode & native code stubs
 ```
 lintcstubs_arity_cmt ocamlfile.cmt >primitives.h
 ```
@@ -62,7 +61,7 @@ only when changing the `.ml` file (or in a CI). This can be useful when the OCam
 This is the recommended version of the tool if you meet the OCaml version requirements and can integrate header generation into the package's build system. The generated header contains both byte-code and native-code prototypes,
 and supports unboxed annotations.
 
-## On OCaml 4.08+ (bytecode only)
+## Bytecode only
 
 ```
 lintcstubs_arity ocamlfile.ml >primitives.h
@@ -79,7 +78,7 @@ This version of the tool doesn't support unboxed arguments, and therefore it doe
 
 # How it works
 
-This is part of a suite of static analysis tools for C stubs described in a [paper](https://arxiv.org/abs/2307.14909) submitted to the ICFP 2023 OCaml workshop.
+This is part of a suite of static analysis tools for C stubs described in a [paper](https://arxiv.org/abs/2307.14909) submitted to the [OCaml 2023 workshop](https://icfp23.sigplan.org/details/ocaml-2023-papers/10/Targeted-Static-Analysis-for-OCaml-C-Stubs-Eliminating-gremlins-from-the-code).
 
 If there is interest, its integration could be proposed into a future version of the compiler.
 
