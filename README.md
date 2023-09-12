@@ -1,4 +1,6 @@
 ![Build and test](https://github.com/edwintorok/lintcstubs-arity/actions/workflows/workflow.yml/badge.svg)
+[![OCaml-CI Build Status](https://img.shields.io/endpoint?url=https://ocaml.ci.dev/badge/edwintorok/lintcstubs-arity/main&logo=ocaml)](https://ocaml.ci.dev/github/edwintorok/lintcstubs-arity)
+
 
 `Lintcstubs_arity` — check consistency between OCaml primitive declarations and implementation
 ==============================================================================================
