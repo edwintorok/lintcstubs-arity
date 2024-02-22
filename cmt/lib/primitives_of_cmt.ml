@@ -160,5 +160,5 @@ let iter_primitives_exn ~path f =
         "Loaded a .cmti file. May not contain all primitives" ;
       iterator.signature iterator signature
   | _ ->
-      invalid_arg
+      warning (Location.in_file path)
         "Could not find an implementation or interface in the .cmt/.cmti file"
