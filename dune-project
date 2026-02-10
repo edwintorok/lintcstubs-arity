@@ -5,8 +5,8 @@
 (generate_opam_files)
 (name lintcstubs-arity)
 (source (github edwintorok/lintcstubs-arity))
-(authors "Edwin Török <edwin.torok@cloud.com>")
-(maintainers "Edwin Török <edwin.torok@cloud.com>")
+(authors "Edwin Török <edwin.torok@citrix.com>")
+(maintainers "Edwin Török <edwin.torok@citrix.com>")
 (license LGPL-2.1-or-later)
 
 (package
@@ -14,7 +14,7 @@
  (synopsis "Generate headers for C bindings")
  (description "Generates .h files from 'external' declarations in .ml or .cmt files. Can be used to spot mismatches in number of arguments between C primitive declared in OCaml and its implementation in the .c file.")
  (depends
-  (ocaml (>= 4.10))
+  (ocaml (>= 5.2))
  )
  (depopts
   (ocaml-src (and :with-test))

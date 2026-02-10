@@ -43,9 +43,8 @@ let native_arg_of_primitive arg =
       Int32
   | Unboxed_integer Pint64 ->
       Int64
-  | Untagged_int ->
-      (* the range of this is one bit less than Pnativeint, but still same type on C side *)
-      Intnat {untagged_int= true}
+  | Untagged_immediate ->
+      Intnat {untagged_int=true}
 
 (**  [ctype_of_native_arg arg] returns the C type used when implementing
      primitives for native code mode.
