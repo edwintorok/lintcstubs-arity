@@ -44,7 +44,7 @@ let native_arg_of_primitive arg =
   | Unboxed_integer Pint64 ->
       Int64
   | Untagged_immediate ->
-      Intnat {untagged_int=true}
+      Intnat {untagged_int= true}
 
 (**  [ctype_of_native_arg arg] returns the C type used when implementing
      primitives for native code mode.

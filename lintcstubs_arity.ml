@@ -35,7 +35,10 @@
 let rec arity_of_type =
   let open Parsetree in
   function
-  | {ptyp_desc= Ptyp_arrow (_, _t1, t2); _} -> 1 + arity_of_type t2 | _ -> 0
+  | {ptyp_desc= Ptyp_arrow (_, _t1, t2); _} ->
+      1 + arity_of_type t2
+  | _ ->
+      0
 
 (** [value_description _ vd] is invoked by the AST iterator for value
     descriptions, including primitives ('external ...').
