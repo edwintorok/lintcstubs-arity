@@ -4,3 +4,15 @@
  (libraries compiler-libs.common)
  (enabled_if
   (>= %{ocaml_version} 4.10)))
+
+(rule
+ (enabled_if
+  (< %{ocaml_version} 5.2))
+ (action
+  (copy# native_arg.lt52.ml native_arg.ml)))
+
+(rule
+ (enabled_if
+  (>= %{ocaml_version} 5.2))
+ (action
+  (copy# native_arg.gte52.ml native_arg.ml)))

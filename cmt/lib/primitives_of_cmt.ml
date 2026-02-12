@@ -12,39 +12,15 @@
  * GNU Lesser General Public License for more details.
  *)
 
+include Ptypes
+open Native_arg
+
 (** [Typedtree] and [Primitive] have an unstable API (depends on compiler version),
     so extract the parts we need and convert to types defined in this file.
     If the build breaks with new compiler versions then only this module needs
     to be updated (perhaps by using Dune's support to conditionally select
     files based on compiler versions)
 *)
-
-(** the C type of an argument *)
-type native_arg =
-  | Value  (** an OCaml value *)
-  | Double  (** an unboxed double *)
-  | Int32  (** an unboxed int32 *)
-  | Int64  (** an unboxed int64 *)
-  | Intnat of {untagged_int: bool}
-      (** an unboxed intnat,  @see <https://v2.ocaml.org/manual/intfc.html#ss:c-unboxed> on the use of [intnat]*)
-  | Bytecode_argv  (** bytecode argv when arity > 5 *)
-  | Bytecode_argn  (** number of arguments when arity > 5 for bytecode *)
-
-let native_arg_of_primitive arg =
-  let open Primitive in
-  match arg with
-  | Same_as_ocaml_repr ->
-      Value
-  | Unboxed_float ->
-      Double
-  | Unboxed_integer Pnativeint ->
-      Intnat {untagged_int= false}
-  | Unboxed_integer Pint32 ->
-      Int32
-  | Unboxed_integer Pint64 ->
-      Int64
-  | Untagged_immediate ->
-      Intnat {untagged_int= true}
 
 (**  [ctype_of_native_arg arg] returns the C type used when implementing
      primitives for native code mode.

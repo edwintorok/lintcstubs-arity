@@ -40,9 +40,7 @@ jobs:
         ocaml-compiler:
           - 5.2.x
           - 5.4.x
-        exclude:
-          - os: windows-latest
-            ocaml-compiler: 5.0.x
+          - 4.14.x
 
     runs-on: ${{ matrix.os }}
 
