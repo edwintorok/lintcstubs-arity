@@ -1,4 +1,4 @@
-(lang dune 3.17)
+(lang dune 3.18)
 (cram enable)
 (implicit_transitive_deps false)
 
@@ -11,6 +11,7 @@
 
 (package
  (name lintcstubs-arity)
+ (maintenance_intent "(latest)")
  (synopsis "Generate headers for C bindings")
  (description "Generates .h files from 'external' declarations in .ml or .cmt files. Can be used to spot mismatches in number of arguments between C primitive declared in OCaml and its implementation in the .c file.")
  (depends
