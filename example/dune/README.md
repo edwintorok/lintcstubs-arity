@@ -26,7 +26,7 @@ The OCaml headers are usually not on default include paths, and `foo.h` is only 
 Editors with language server integrations (e.g., using `clangd` as language server) won't be able to find these,
 and show an error at the `#include` lines.
 
-For better LSP integration the [`dune-compiledb`](https://github.com/edwintorok/dune-compiledb/) tool can be used:
+For better LSP integration the [`dune-compiledb`](https://codeberg.org/edwintorok/dune-compiledb/) tool can be used:
 ```
 dune rules | dune-compiledb <project-root> [...additional flags]
 ```
