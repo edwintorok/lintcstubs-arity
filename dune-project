@@ -1,12 +1,12 @@
-(lang dune 2.8)
+(lang dune 3.17)
 (cram enable)
 (implicit_transitive_deps false)
 
 (generate_opam_files)
 (name lintcstubs-arity)
-(source (github edwintorok/lintcstubs-arity))
+(source (codeberg edwintorok/lintcstubs-arity))
 (authors "Edwin Török <edwin.torok@citrix.com>")
-(maintainers "Edwin Török <edwin.torok@citrix.com>")
+(maintainers "Edwin Török <edwin@etorok.net>")
 (license LGPL-2.1-or-later)
 
 (package
