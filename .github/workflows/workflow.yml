@@ -4,7 +4,7 @@ on:
   - pull_request
   - push
 
-permissions: read-all
+permissions: {}
 
 jobs:
   minimal:
@@ -21,7 +21,9 @@ jobs:
         run: sudo apt-get install -y ocaml make
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Build and auto-generate header (bytecode-only)
         run: make -C example/minimal prog1.byte
@@ -46,7 +48,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v3
@@ -67,7 +71,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Use OCaml 5.4.0
         uses: ocaml/setup-ocaml@v3
@@ -82,7 +88,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout tree
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Set-up OCaml 5.4.0
         uses: ocaml/setup-ocaml@v3
