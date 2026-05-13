@@ -106,17 +106,7 @@ let iter_primitives_exn ~path f =
     | _ ->
         ()
   in
-  let type_kind _ tkind =
-    let open Typedtree in
-    match tkind with
-    | Ttype_abstract ->
-        ()
-    | Ttype_record _ ->
-        () (* TODO *)
-    | Ttype_variant _cnstr ->
-        ()
-    | Ttype_open ->
-        ()
+  let type_kind _ _ = ()
   in
   let open Tast_iterator in
   let iterator = {default_iterator with value_description; type_kind} in
