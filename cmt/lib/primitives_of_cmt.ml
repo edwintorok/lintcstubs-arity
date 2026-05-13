@@ -106,8 +106,7 @@ let iter_primitives_exn ~path f =
     | _ ->
         ()
   in
-  let type_kind _ _ = ()
-  in
+  let type_kind _ _ = () in
   let open Tast_iterator in
   let iterator = {default_iterator with value_description; type_kind} in
   path
