@@ -1,3 +1,7 @@
+## 0.5.2 (2026-05-14)
+
+* OCaml 5.5 support
+
 ## 0.5.1 (2026-02-12)
 
 * Reintroduce OCaml 4.14 support
